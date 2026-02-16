@@ -55,6 +55,15 @@ export async function upload<T>(path: string, formData: FormData): Promise<T> {
   return handleResponse<T>(response);
 }
 
+export async function put<T>(path: string, body?: unknown): Promise<T> {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  return handleResponse<T>(response);
+}
+
 export async function del<T>(path: string): Promise<T> {
   const response = await fetch(`${BASE_URL}${path}`, {
     method: 'DELETE',

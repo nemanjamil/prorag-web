@@ -115,3 +115,51 @@ export interface PromptTemplate {
   createdAt: string;
   updatedAt: string;
 }
+
+// --- Experiment types ---
+
+export interface ConfigVariant {
+  searchMode?: SearchMode;
+  queryStrategy?: QueryStrategy;
+  rerankerEnabled?: boolean;
+  temperature?: number;
+  retrievalTopK?: number;
+  rerankerTopN?: number;
+  documentIds?: number[];
+  promptTemplateId?: number;
+}
+
+export interface CompareRequest {
+  queryText: string;
+  configA: ConfigVariant;
+  configB: ConfigVariant;
+}
+
+export interface ComparisonMetrics {
+  timingDeltaMs: number;
+  costDeltaUsd: number;
+  chunkOverlapCount: number;
+  chunksACount: number;
+  chunksBCount: number;
+}
+
+export interface CompareResult {
+  queryText: string;
+  resultA: QueryLog;
+  resultB: QueryLog;
+  comparison: ComparisonMetrics;
+}
+
+export interface CreatePromptTemplateDto {
+  name: string;
+  systemPrompt: string;
+  description?: string;
+  isDefault?: boolean;
+}
+
+export interface UpdatePromptTemplateDto {
+  name?: string;
+  systemPrompt?: string;
+  description?: string;
+  isDefault?: boolean;
+}
