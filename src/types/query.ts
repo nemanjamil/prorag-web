@@ -1,4 +1,5 @@
 import type { QueryStrategy, SearchMode } from './enums';
+import type { EvaluationScores } from './evaluation';
 
 export interface RetrievedChunk {
   documentId: number;
@@ -83,7 +84,7 @@ export interface QueryLog {
   completionTokens: number;
   estimatedCostUsd: number;
   retrievedChunks: RetrievedChunk[] | null;
-  evaluationScores: unknown;
+  evaluationScores: EvaluationScores | null;
   createdAt: string;
 }
 
