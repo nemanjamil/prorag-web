@@ -95,6 +95,9 @@ export interface QueryLogSummary {
   rerankerEnabled: boolean;
   llmModel: string;
   totalMs: number | null;
+  embeddingTokens: number;
+  promptTokens: number;
+  completionTokens: number;
   estimatedCostUsd: number;
   createdAt: string;
 }

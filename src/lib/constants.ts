@@ -22,7 +22,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Query', path: '/query', icon: Search, phase: 4, enabled: true },
   { label: 'Pipeline', path: '/pipeline', icon: GitBranch, phase: 6, enabled: true },
   { label: 'Experiments', path: '/experiments', icon: FlaskConical, phase: 7, enabled: true },
-  { label: 'Costs', path: '/costs', icon: DollarSign, phase: 8, enabled: false },
+  { label: 'Costs', path: '/costs', icon: DollarSign, phase: 8, enabled: true },
   { label: 'Evaluation', path: '/evaluation', icon: CheckCircle, phase: 9, enabled: false },
   { label: 'Chunking Lab', path: '/chunking-playground', icon: Scissors, phase: 10, enabled: false },
 ];
