@@ -71,6 +71,8 @@ export interface QueryLog {
   rerankerTopN: number;
   llmModel: string;
   promptTemplateId: number | null;
+  transformationMs: number | null;
+  transformedQueries: string[] | null;
   queryEmbeddingMs: number | null;
   retrievalMs: number | null;
   rerankingMs: number | null;
@@ -80,9 +82,28 @@ export interface QueryLog {
   promptTokens: number;
   completionTokens: number;
   estimatedCostUsd: number;
-  retrievedChunks: unknown;
+  retrievedChunks: RetrievedChunk[] | null;
   evaluationScores: unknown;
   createdAt: string;
+}
+
+export interface QueryLogSummary {
+  id: number;
+  queryText: string;
+  queryStrategy: QueryStrategy;
+  searchMode: SearchMode;
+  rerankerEnabled: boolean;
+  llmModel: string;
+  totalMs: number | null;
+  estimatedCostUsd: number;
+  createdAt: string;
+}
+
+export interface PaginatedQueryLogs {
+  data: QueryLogSummary[];
+  total: number;
+  page: number;
+  limit: number;
 }
 
 export interface PromptTemplate {
