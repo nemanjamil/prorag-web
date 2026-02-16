@@ -36,3 +36,22 @@ export interface UploadDocumentResponse {
   document: Document;
   chunks: Chunk[];
 }
+
+export interface PreviewChunksParams {
+  strategy: ChunkStrategy;
+  chunkSize: number;
+  chunkOverlap: number;
+}
+
+export interface ChunkStats {
+  count: number;
+  avgLength: number;
+  minLength: number;
+  maxLength: number;
+  totalChars: number;
+}
+
+export interface PreviewChunksResponse {
+  chunks: Chunk[];
+  stats: ChunkStats;
+}
