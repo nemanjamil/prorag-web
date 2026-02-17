@@ -61,38 +61,40 @@ export function QueryPage() {
       </div>
 
       {/* Input + Settings */}
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_320px]">
-        <QueryInput
-          onSubmit={handleSubmit}
-          onCancel={pipeline.cancel}
-          isStreaming={isStreaming}
-        />
+      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[1fr_320px]">
+        <div className="space-y-6">
+          <QueryInput
+            onSubmit={handleSubmit}
+            onCancel={pipeline.cancel}
+            isStreaming={isStreaming}
+          />
+
+          {/* Answer */}
+          {pipeline.status !== 'idle' && (
+            <QueryAnswer
+              status={pipeline.status}
+              answer={pipeline.answer}
+              error={pipeline.error}
+              finalCostUsd={pipeline.finalCostUsd}
+              queryLogId={pipeline.queryLogId}
+            />
+          )}
+
+          {/* Metadata */}
+          {pipeline.metadata && (
+            <QueryMetadata
+              metadata={pipeline.metadata}
+              finalCostUsd={pipeline.finalCostUsd}
+              queryLogId={pipeline.queryLogId}
+            />
+          )}
+        </div>
         <QuerySettings
           settings={settings}
           onChange={handleSettingsChange}
           disabled={isStreaming}
         />
       </div>
-
-      {/* Answer */}
-      {pipeline.status !== 'idle' && (
-        <QueryAnswer
-          status={pipeline.status}
-          answer={pipeline.answer}
-          error={pipeline.error}
-          finalCostUsd={pipeline.finalCostUsd}
-          queryLogId={pipeline.queryLogId}
-        />
-      )}
-
-      {/* Metadata */}
-      {pipeline.metadata && (
-        <QueryMetadata
-          metadata={pipeline.metadata}
-          finalCostUsd={pipeline.finalCostUsd}
-          queryLogId={pipeline.queryLogId}
-        />
-      )}
     </div>
   );
 }
